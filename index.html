@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Find your next favourite Studio Ghibli film with CineScope. Search titles, explore stories and discover film details.">
+  <title>CineScope | Discover Studio Ghibli films</title>
+  <link rel="icon" href="data:,">
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <header class="site-header page-width">
+    <a class="brand" href="./" aria-label="CineScope home">CineScope<span>.</span></a>
+    <p class="collection-label">The Studio Ghibli collection</p>
+  </header>
+
+  <main id="main-content" class="page-width" tabindex="-1">
+    <section class="intro" aria-labelledby="page-title">
+      <h1 id="page-title">Find your next<br><em>favourite film.</em></h1>
+      <p>From soaring castles to quiet adventures. Explore a collection of
+        Studio Ghibli films and discover the story behind each one.</p>
+    </section>
+
+    <section class="search-section" aria-label="Find a film">
+      <form id="search-form" role="search">
+        <div class="search-field">
+          <label for="movie-title">Movie title</label>
+          <input type="search" id="movie-title" name="title" required minlength="2"
+            maxlength="80" placeholder="Try Totoro, Castle or Spirited Away"
+            aria-describedby="search-help" autocomplete="off">
+        </div>
+        <button type="submit" id="search-button">Search films</button>
+        <div class="sort-field">
+          <label for="sort-order">Sort by</label>
+          <select id="sort-order" name="sort">
+            <option value="title">Title: A–Z</option>
+            <option value="year">Newest first</option>
+            <option value="rating">Highest rated</option>
+          </select>
+        </div>
+      </form>
+      <p id="search-help">Search by all or part of a title (at least 2 characters).
+        This catalogue contains Studio Ghibli films only.</p>
+    </section>
+
+    <section class="results-section" aria-labelledby="results-heading">
+      <div class="results-header">
+        <h2 id="results-heading">Explore the collection</h2>
+        <p class="score-note">Scores from Rotten Tomatoes</p>
+      </div>
+      <p id="status-message" role="status" aria-live="polite" aria-atomic="true">
+        Loading the film collection…
+      </p>
+      <noscript><p>Please enable JavaScript to search for films and view their details.</p></noscript>
+      <div id="movie-results" class="movie-grid" aria-busy="false"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer page-width">
+    <p>CineScope <span aria-hidden="true">/</span> A little cinema, a little wonder.</p>
+    <p>Film data: <a href="https://ghibliapi.vercel.app/">Studio Ghibli API</a>.
+      Posters supplied by the API via TMDB. An unofficial student project.</p>
+  </footer>
+
+  <template id="movie-card-template">
+    <article class="movie-card">
+      <div class="poster">
+        <img class="movie-poster" alt="" width="600" height="900" loading="lazy" decoding="async">
+        <p class="poster-fallback" hidden>Poster unavailable</p>
+      </div>
+      <div class="card-content">
+        <div class="movie-meta">
+          <span class="movie-year"></span>
+          <span class="movie-score"></span>
+        </div>
+        <h3 class="movie-title"></h3>
+        <p class="movie-director"></p>
+        <details>
+          <summary>View details<span class="visually-hidden movie-accessible-title"></span></summary>
+          <div class="film-details">
+            <p class="detail-status" role="status"></p>
+            <div class="detail-content" hidden>
+              <p class="movie-description"></p>
+              <dl>
+                <dt>Original title</dt><dd class="original-title"></dd>
+                <dt>Running time</dt><dd class="running-time"></dd>
+                <dt>Producer</dt><dd class="movie-producer"></dd>
+              </dl>
+            </div>
+          </div>
+        </details>
+      </div>
+    </article>
+  </template>
+</body>
+</html>
