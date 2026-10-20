@@ -1,5 +1,7 @@
 # CineScope
 
+Live website: [CineScope on GitHub Pages](https://sadiqhassan41.github.io/cine-scope/)
+
 ## Brief description
 
 CineScope is a responsive movie search website for exploring Studio Ghibli films. Users can search by title, sort results alphabetically, by release year or by rating, and expand films to view additional details.
